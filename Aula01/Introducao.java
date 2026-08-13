@@ -23,11 +23,11 @@ public class Introducao {
 
         System.out.println("ola, meu nome e " + nome + "; e minha idade e " + idade);
 
-        if(idade >= 18)
+        if(idade >= 18){
             System.out.println("Maior de idade");
-        else
+        }else{
             System.out.println("Menor de idade");
-
+        }
         contador = 0;
 
         do{
