@@ -1,4 +1,4 @@
-package Aula02;
+package Aula02.Ponto;
 import java.lang.Math;
 
 public class Ponto{
