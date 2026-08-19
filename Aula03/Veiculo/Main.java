@@ -1,4 +1,4 @@
-package Aula02.Veiculo;
+package Aula03.Veiculo;
 import java.util.Scanner;
 
 
@@ -10,6 +10,8 @@ public class Main{
         double valorPago, totalValorPago = 0.00, mediaValorPago, valorHora;
         String placa, modelo;
 
+        Permanencia permanencia;
+        TipoValor tipoValor;
 
         do{
             System.out.print("\nQtd veiculos: ");
@@ -62,36 +64,32 @@ public class Main{
             }while(valorHora < 0.00);
 
             
-            System.out.println("\n...............................................");
+            System.out.println("\n...............................................\n");
 
             Veiculo veiculo = new Veiculo(placa, modelo, horas, valorHora);
+            valorPago = veiculo.calcularValor();
+            permanencia = veiculo.verificarTipoPermanencia();
+            tipoValor = veiculo.verificarTipoValor();
+    
+            totalValorPago += valorPago;
+            System.out.println("Permanencia: " + permanencia);
+            System.out.printf("Valor pago R$: %.2f\n", valorPago);
+            System.out.println("Tipo Valor: " + tipoValor);
+            
 
-            if(horas <= 2){
-                System.out.println("\nPermanencia Curta");
+            if(permanencia == Permanencia.CURTA){
                 qtdPermaCurta += 1;
-            }else if(horas <= 5){
-                System.out.println("\nPermanencia Media");
+            }else if(permanencia == Permanencia.MEDIA){
                 qtdPermaMedia += 1;
             }else{
-                System.out.println("\nPermanencia Longa");
                 qtdPermaLonga += 1;
             }
 
-            valorPago = veiculo.calcularValor();
-
-            totalValorPago += valorPago;
-
-            System.out.printf("\nValor pago R$: %.2f\n", valorPago);
-
-            if(valorPago >= 50.00){
-                System.out.println("Valor Elevado");
+            if(tipoValor == TipoValor.ELEVADO){
                 qtdValorElevado += 1;
             }else{
                 qtdValorNormal += 1;
-                 System.out.println("Valor Normal");
             }
-
-            System.out.println("========================================");
 
         }
 

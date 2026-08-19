@@ -1,4 +1,4 @@
-package Aula02.Veiculo;
+package Aula03.Veiculo;
 
 public class Veiculo{
     private String placa;
@@ -18,6 +18,24 @@ public class Veiculo{
 
     public double calcularValor(){
         return this.horas * this.valorHora;
+    }
+
+    public Permanencia verificarTipoPermanencia(){
+        if(this.horas <= 2){
+            return Permanencia.CURTA;
+        }else if(this.horas <= 5){
+            return Permanencia.MEDIA;
+        }else{
+            return Permanencia.LONGA;
+        }
+    }
+
+    public TipoValor verificarTipoValor(){
+        if(calcularValor() >= 50.00){
+            return TipoValor.ELEVADO;
+        }else{
+            return TipoValor.NORMAL;
+        }
     }
 
     public String getPlaca(){
