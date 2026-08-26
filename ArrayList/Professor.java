@@ -1,4 +1,4 @@
-package Aula04;
+package ArrayList;
 
 public class Professor{
 
