@@ -14,45 +14,36 @@ public class Professor{
         this.sala = sala;
     }
 
-    public void chamada(boolean[] chamada){
+    public void iniciarAula(){
+        if(!sala.isOcupada()){
+            System.out.printf("Aula iniciado na sala %d com o professor %s - matricula %s\n", sala.getNome(), nome, matricula);
+            sala.alternar();
+        }else{
+            System.out.printf("Sala %s está ocupada\n", sala.getNome());
+        }
+    }
+
+    public void chamada(boolean[] v){
+        int dia = sala.getDiaDeAula();
+        Aluno[] turma = sala.getTurma();
+
         int i;
-        Aluno[] turma = this.sala.getTurma();
-        int dia = this.sala.getDiaDeAula();
 
         for(i = 0; i < turma.length; i += 1){
             if(turma[i] != null){
-                turma[i].getPresenca()[dia] = chamada[i];
+                turma[i].getPresenca()[dia] = v[i];
             }
-
         }
     }
 
-    public String iniciarAula(){
-        // if(this.sala.isOcupada() == false){
-        if(!this.sala.isOcupada()){
-            this.sala.alterar();
-            return "A aula esta acontecendo na sala " + this.sala.getNome() +" com professor " + this.nome + " - matricula " + this.matricula;
+    public void terminarAula(){
+        if(sala.isOcupada()){
+            System.out.printf("Aula finalizada com o professor %s - matricula %d\n", nome, matricula);
+            sala.setDiaDeAula(sala.getDiaDeAula() + 1);
+        }else{
+            System.out.printf("Sem aula no momento\n");
         }
-
-        return "Sala esta ocupada";
     }
-
-    public String terminarAula(){
-        int dia = this.sala.getDiaDeAula();
-
-        // if(this.sala.isOcupada() == true){
-        if(this.sala.isOcupada()){
-            this.sala.alterar();
-            dia += 1;
-            this.sala.setDiaDeAula(dia);
-
-            return "Aula na sala " + this.sala.getNome() + " finalizada com professor "  + this.nome + " - matricula " + this.matricula;
-        }
-
-        return "Nao existe aula na sala " + this.sala.getNome();
-    }
-
-    
 
     public String getNome() {
         return nome;
@@ -86,5 +77,7 @@ public class Professor{
         this.sala = sala;
     }
 
+
+    
     
 }
