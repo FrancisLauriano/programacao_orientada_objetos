@@ -1,4 +1,4 @@
-package Aula07;
+package Aula07.Universidade;
 
 public class Atendimento {
     private int dia;
