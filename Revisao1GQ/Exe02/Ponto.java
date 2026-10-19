@@ -40,8 +40,6 @@ public class Ponto {
 
     public void distanciaPonto(Ponto pB){
         double distanciaAB = Math.sqrt(Math.pow(pB.x - x, 2) + Math.pow(pB.y - y, 2));
-
-        
-        
+        System.out.printf("Distancia AB %.2f\n", distanciaAB);
     }
 }
